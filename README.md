@@ -1,2 +1,5 @@
 # Image-Extractor
-https://github.com/corona10/FoodDataSet 의 Image Dataset의 이미지 추출을 위함
+NVIDIA DEEP LEARNING CONTEST 2016의 데이터셋의 추출
+
+# Dependency
+Data from : https://github.com/corona10/FoodDataSet
