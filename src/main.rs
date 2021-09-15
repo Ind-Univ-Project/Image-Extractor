@@ -8,7 +8,10 @@ use async_std::task;
 
 use image::bmp::BmpEncoder as Encoder;
 use image::ColorType;
+
 use uuid::Uuid;
+
+use std::time::Instant;
 
 const IMAGE_SIZE: usize = 256 * 256 * 3;
 
@@ -27,6 +30,8 @@ async fn main() -> anyhow::Result<()> {
     let mut files = read_dir(src_dir).await?;
 
     reset_dest_dir(labels.clone()).await;
+
+    let start = Instant::now();
     
     let mut handles = Vec::new();
     loop {
@@ -44,6 +49,8 @@ async fn main() -> anyhow::Result<()> {
     for handle in handles {
         handle.await.unwrap();
     }
+
+    println!("{:?}", Instant::now().duration_since(start));
     Ok(())
 }
 
